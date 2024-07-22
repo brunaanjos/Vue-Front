@@ -8,7 +8,7 @@ const cores = ref([]);
 const cor = reactive({ ...defaultCor });
 
 onMounted(async () => {
-  cores.value = await coresApi.buscarTodasAsCores();
+  cores.value = await coresApi.buscarTodasAsCor();
   console.log(cores.value)
 });
 
@@ -18,11 +18,11 @@ function limpar() {
 
 async function salvar() {
   if (cor.id) {
-    await coresApi.atualizarCores(cor);
+    await coresApi.atualizarCor(cor);
   } else {
-    await coresApi.adicionarCores(cor);
+    await coresApi.adicionarCor(cor);
   }
-  cores.value = await coresApi.buscarTodasAsCores();
+  cores.value = await coresApi.buscarTodasAsCor();
   limpar();
 }
 
@@ -32,7 +32,7 @@ function editar(cor_para_editar) {
 
 async function excluir(id) {
   await coresApi.excluirCores(id);
-  cores.value = await coresApi.buscarTodasAsCores();
+  cores.value = await coresApi.buscarTodasAsCor();
   limpar();
 }
 </script>
